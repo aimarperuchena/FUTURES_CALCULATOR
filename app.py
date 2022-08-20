@@ -1,6 +1,6 @@
 import dash
 import dash_html_components as html
-import dash_core_components as dcc
+from dash import dcc
 import plotly.graph_objs as go
 import numpy as np
 import pandas as pd
@@ -23,7 +23,7 @@ app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheet
 }], meta_tags=[
     {"name": "viewport", "content": "width=device-width, initial-scale=1"}
 ],)
-auth = dash_auth.BasicAuth(app, USERNAME_PASSWORD_PAIRS)
+
 
 
 def Average(lst):
@@ -33,28 +33,28 @@ def Average(lst):
 form_layout = html.Div([
     dbc.Card(
         dbc.CardBody(dbc.Row([
-            dbc.Col(dbc.FormGroup(
+            dbc.Col(dbc.CardGroup(
                 [
                     dbc.Label("Balance", html_for="balance-input"),
                     dbc.Input(type="number", id="balance-input",
                               placeholder="Enter balance"),
                 ]
             )),
-            dbc.Col(dbc.FormGroup(
+            dbc.Col(dbc.CardGroup(
                 [
                     dbc.Label("Unit Value", html_for="unit-input"),
                     dbc.Input(type="number", id="unit-input",
                               placeholder="Enter Unit Value"),
                 ]
             )),
-            dbc.Col(dbc.FormGroup(
+            dbc.Col(dbc.CardGroup(
                 [
                     dbc.Label("Open Price", html_for="open-input"),
                     dbc.Input(type="number", id="open-input",
                               placeholder="Enter Open Price"),
                 ]
             )),
-            dbc.Col(dbc.FormGroup(
+            dbc.Col(dbc.CardGroup(
                 [
                     dbc.Label("Percentage Change",
                               html_for="percentage-input"),
@@ -62,7 +62,7 @@ form_layout = html.Div([
                               placeholder="Enter Percentage Change"),
                 ]
             )),
-            dbc.Col(dbc.FormGroup(
+            dbc.Col(dbc.CardGroup(
                 [
                     dbc.Label("LONG/SHORT", html_for="long-short-input"),
                     dbc.RadioItems(
